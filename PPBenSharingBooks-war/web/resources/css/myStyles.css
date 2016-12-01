@@ -1,0 +1,84 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10/08/2016, 3:04:26 PM
+    Author     : Thi Bich Phuong Ngo
+*/
+
+#mainContent{
+    padding: 100px 0;
+}
+.errorDiv{
+    color:red;
+    font-size: 80%;
+}
+.navbar-custom{
+    padding: 0 0;
+    
+}
+#top, #content, #bottom{
+    display: block;
+    clear: both;
+}
+.footer{
+    font-weight: bold;
+    background-color: #2C3E50;
+    color:white;
+}
+.footer-left{
+    float: left;
+    
+}
+.footer-right{
+    float: right;
+}
+.btn{
+    padding:5px;
+    font-size: medium;
+    margin-left: 5px;
+}
+.page-scroll a{
+    font-size: 70%;
+}
+li:active a{
+  /*  background: #ffffff;
+    color:black;*/
+}
+.book-search-table{
+    margin-bottom: 5px;
+}
+.book-table{
+	border-collapse:collapse;
+}
+
+.book-table-header{
+	text-align:center;
+	background:none repeat scroll 0 0 #E5E5E5;
+	border-bottom:1px solid #BBBBBB;
+	padding:16px;
+}
+
+.book-table-odd-row{
+	text-align:center;
+	background:none repeat scroll 0 0 #FFFFFFF;
+	border-top:1px solid #BBBBBB;
+}
+
+.book-table-even-row{
+	text-align:center;
+	background:none repeat scroll 0 0 #F9F9F9;
+	border-top:1px solid #BBBBBB;
+}
+.paddingLeftZero{
+    padding-left: 0px;
+}
+.userAvailable{
+    color:#003eff;
+}
+.formHeader{
+    font-size: 150%;
+    font-weight: bold;
+}

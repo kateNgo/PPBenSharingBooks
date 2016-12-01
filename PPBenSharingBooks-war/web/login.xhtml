@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/templates/ThiNgoBokOnlineLayout.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+    
+    <ui:define name="content">
+
+        <h:form  id="loginForm" >
+            <h:panelGroup layout="block" styleClass="row">
+                <h:panelGroup layout="block" styleClass="form-group col-sm-2">
+                    <h:outputLabel >#{msg['label.username']}</h:outputLabel>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="form-group col-sm-3">
+                    <h:inputText id="username" value="#{accountController.email}" required="true" requiredMessage="#{msg['error.loginForm.username']}" />
+                </h:panelGroup>
+                
+            </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="row">
+                    <h:panelGroup layout="block" styleClass="form-group col-sm-2">
+                        <h:outputLabel>#{msg['label.password']}</h:outputLabel>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="form-group col-sm-3">
+                        <h:inputSecret id="password" value="#{accountController.password}" required="true" requiredMessage="#{msg['error.loginForm.password']}"/>
+                    </h:panelGroup>
+                </h:panelGroup>
+            
+                <h:panelGroup layout="block" styleClass="row">
+                    <h:panelGroup layout="block" styleClass="form-group col-sm-2"></h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="form-group col-sm-3">
+                        
+                        
+                    </h:panelGroup>
+                    
+                </h:panelGroup>
+            
+                <h:panelGroup layout="block" styleClass="row">
+                    <h:panelGroup layout="block" styleClass="form-group col-sm-2">
+                        <h:commandButton styleClass="btn btn-success btn-lg" id="loginBtn" action="#{accountController.login()}" value="#{msg['button.login']}"/>
+                    </h:panelGroup>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="row">
+                    <h:panelGroup  styleClass="form-group col-sm-6 errorDiv">
+                         <h:messages style="color: red;"/>
+                    </h:panelGroup>
+                </h:panelGroup>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+

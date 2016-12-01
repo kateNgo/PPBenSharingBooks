@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+    <body>
+
+        <ui:composition>
+
+            <h:panelGroup layout="block" id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom affix">
+                <h:panelGroup layout="block" styleClass="col-sm-10 col-sm-offset-1 container">
+                    <h:panelGroup layout="block" class="navbar-header page-scroll">
+                        <h:link styleClass="navbar-brand"  >#{msg['application.title']}</h:link>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <h:panelGroup rendered="#{empty accountController.account.email}">
+                                <li class="page-scroll" ><a id="home" href="#{request.contextPath}/faces/login.xhtml" >#{msg['menu.home']}</a></li>
+                                <li class="page-scroll" ><a id="signUp" href="#{request.contextPath}/faces/createAccount.xhtml">#{msg['menu.signUp']}</a></li>
+                            </h:panelGroup>
+                            <h:panelGroup rendered="#{not empty accountController.account.email}">
+                                    <li class="page-scroll" ><a id="search" href="#{request.contextPath}/faces/secure/searchBooks.xhtml">#{msg['menu.search']}</a></li>
+                                    <li class="page-scroll" ><a id="search" href="#{request.contextPath}/faces/secure/newBook.xhtml">#{msg['menu.newBook']}</a></li>
+                                    <li class="page-scroll" ><a id="signUp" href="#{request.contextPath}/faces/secure/editAccount.xhtml">#{msg['menu.editAccount']}</a></li>
+                                    <li class="page-scroll" ><a id="signUp" href="#{request.contextPath}/faces/secure/shopCart.xhtml">#{msg['menu.cart']}</a></li>
+
+                                <li class="page-scroll" ><a id="search" href="#{request.contextPath}/faces/logout.xhtml">#{msg['menu.signOut']}</a></li>
+                            </h:panelGroup>
+                        </ul>
+                    </h:panelGroup>
+                </h:panelGroup>
+            </h:panelGroup>
+
+        </ui:composition>
+    </body>
+    <script>
+        $("a").click(function () {
+            alert("The paragraph was clicked.");
+        });
+    </script>
+</html>
+
