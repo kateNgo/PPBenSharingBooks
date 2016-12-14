@@ -22,12 +22,13 @@
                                 <li class="page-scroll" ><a id="signUp" href="#{request.contextPath}/faces/createAccount.xhtml">#{msg['menu.signUp']}</a></li>
                             </h:panelGroup>
                             <h:panelGroup rendered="#{not empty accountController.account.email}">
-                                    <li class="page-scroll" ><a id="search" href="#{request.contextPath}/faces/secure/searchBooks.xhtml">#{msg['menu.search']}</a></li>
+                                <h:panelGroup rendered="#{not accountController.account.admin}">
+                                     <li class="page-scroll" ><a id="search" href="#{request.contextPath}/faces/secure/searchBooks.xhtml">#{msg['menu.search']}</a></li>
                                     <li class="page-scroll" ><a id="search" href="#{request.contextPath}/faces/secure/newBook.xhtml">#{msg['menu.newBook']}</a></li>
                                     <li class="page-scroll" ><a id="signUp" href="#{request.contextPath}/faces/secure/editAccount.xhtml">#{msg['menu.editAccount']}</a></li>
-                                    <li class="page-scroll" ><a id="signUp" href="#{request.contextPath}/faces/secure/shopCart.xhtml">#{msg['menu.cart']}</a></li>
-
-                                <li class="page-scroll" ><a id="search" href="#{request.contextPath}/faces/logout.xhtml">#{msg['menu.signOut']}</a></li>
+                                    <li class="page-scroll" ><a id="search" href="#{request.contextPath}/faces/logout.xhtml">#{msg['menu.signOut']}</a></li>
+                                </h:panelGroup>
+                                   
                             </h:panelGroup>
                         </ul>
                     </h:panelGroup>

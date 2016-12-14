@@ -7,3 +7,10 @@ from account;
 create view jdbcrealm_group (email, groupname) as
 select email, accountType
 from account;
+
+insert into booktype (typeid, typename) values (1, 'IT Programming');
+insert into booktype (typeid,typename) values (2,'IT Networking');
+insert into booktype (typeid,typename) values (3,'IT System');
+insert into booktype (typeid,typename) values (4,'IT Database');
+insert into booktype (typeid,typename) values (5,'IT General');
+

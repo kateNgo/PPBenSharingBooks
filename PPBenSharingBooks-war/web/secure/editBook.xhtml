@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/templates/ThiNgoBokOnlineLayout.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <ui:define name="content">
+                    <h:form id="createBook" enctype="multipart/form-data" prependId="false">
+                        <h:panelGroup layout="block" styleClass="row">
+                             <h:panelGroup layout="block" styleClass="form-group col-sm-7">
+                                 <h:outputText value="#{msg['form.editBook.title']}" styleClass="formHeader"/>
+                             </h:panelGroup>
+                        </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="row">
+                        <h:panelGroup layout="block" styleClass="form-group col-sm-2">
+                            <h:outputLabel >#{msg['label.title']}</h:outputLabel></h:panelGroup>
+                        <h:panelGroup layout="block" styleClass="form-group col-sm-5">
+                            <h:inputText id="title" value="#{bookController.book.title}" required="true" requiredMessage="#{msg['error.createBookForm.title']}" />
+                        </h:panelGroup>
+                        
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="row">
+                        <h:panelGroup layout="block" styleClass="form-group col-sm-2">
+                            <h:outputLabel >#{msg['label.authors']}</h:outputLabel></h:panelGroup>
+                        <h:panelGroup layout="block" styleClass="form-group col-sm-5">
+                            <h:inputText id="authors" value="#{bookController.book.authors}" />
+                        </h:panelGroup></h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="row">
+                        <h:panelGroup layout="block" styleClass="form-group col-sm-2">
+                            <h:outputLabel >#{msg['label.publisher']}</h:outputLabel></h:panelGroup>
+                        <h:panelGroup layout="block" styleClass="form-group col-sm-5">
+                            <h:inputText id="publisher" value="#{bookController.book.publisher}" />
+                        </h:panelGroup></h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="row">
+                        <h:panelGroup layout="block" styleClass="form-group col-sm-2">
+                            <h:outputLabel >#{msg['label.publishYear']}</h:outputLabel></h:panelGroup>
+                        <h:panelGroup layout="block" styleClass="form-group col-sm-5">
+                            <h:inputText id="publishYear" value="#{bookController.book.publishYear}" >
+                                <f:validator validatorId="au.edu.uts.aip.sharingBook.validator.MyValidator"/>
+                            </h:inputText>
+                        </h:panelGroup>
+                    </h:panelGroup>
+                         <h:panelGroup layout="block" styleClass="row">
+                        <h:panelGroup layout="block" styleClass="form-group col-sm-2">
+                            <h:outputLabel >#{msg['label.bookType']}</h:outputLabel></h:panelGroup>
+                        <h:panelGroup layout="block" styleClass="form-group col-sm-4">
+                            <h:selectOneMenu id="bookType" value="#{bookController.selectedBookType}"  >
+                                <f:selectItems value="#{bookTypeController.list()}" var="t"
+                                               itemLabel="#{t.typeName}" itemValue="#{t.typeId}"  />
+                               
+                            </h:selectOneMenu>
+                        </h:panelGroup></h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="row">
+                        <h:panelGroup layout="block" styleClass="form-group col-sm-2">
+                            <h:outputLabel >#{msg['label.bookFile']}</h:outputLabel></h:panelGroup>
+                        <h:panelGroup layout="block" styleClass="form-group col-sm-5">
+                            <h:inputFile id="bookFile" value="#{bookController.uploadedFile}" />
+                        </h:panelGroup></h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="row">
+                        <h:panelGroup layout="block" styleClass="form-group col-sm-7">
+                            <h:commandButton styleClass="btn btn-success btn-lg" id="editBtn" action="#{bookController.updateBook()}" value="#{msg['button.save']}"/>
+                             <h:button styleClass="btn btn-success btn-lg" value="#{msg['button.cancel']}" outcome="searchBooks" />
+                      
+                        </h:panelGroup></h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="row">
+                        <h:panelGroup  styleClass="form-group col-sm-6 errorDiv">
+                            <h:messages/>
+                        </h:panelGroup>
+                    </h:panelGroup>
+                    
+                </h:form>
+                               
+         </ui:define>
+</ui:composition>

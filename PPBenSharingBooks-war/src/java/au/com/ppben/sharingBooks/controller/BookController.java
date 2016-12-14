@@ -2,7 +2,9 @@ package au.com.ppben.sharingBooks.controller;
 
 import au.com.ppben.sharingBooks.MyUtility;
 import au.com.ppben.sharingBooks.domain.Book;
+import au.com.ppben.sharingBooks.domain.BookType;
 import au.com.ppben.sharingBooks.remote.BookBeanRemote;
+import au.com.ppben.sharingBooks.remote.BookTypeBeanRemote;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -41,8 +43,12 @@ public class BookController implements Serializable {
     private Part uploadedFile;
     @EJB
     private BookBeanRemote bookBean ;
+    @EJB 
+    private BookTypeBeanRemote bookTypeBean;
+    
     private static final String PDF_MINE_TYPE = "application/pdf";
     private String searchTerm;
+    private int selectedBookType;
     /**
      * This is to inject member controller to in order to ensure the users must
      * login before accessing other pages
@@ -98,6 +104,14 @@ public class BookController implements Serializable {
      */
     public void setSearchTerm(String searchTerm) {
         this.searchTerm = searchTerm;
+    }
+
+    public int getSelectedBookType() {
+        return selectedBookType;
+    }
+
+    public void setSelectedBookType(int selectedBookType) {
+        this.selectedBookType = selectedBookType;
     }
 
     
@@ -161,6 +175,7 @@ public class BookController implements Serializable {
      */
     public String editBook(int id) {
         book = bookBean.getBookbyId(id);
+        selectedBookType = book.getType().getTypeId().intValue();
         return "/secure/editBook?faces-redirect=true";
     }
 
@@ -178,6 +193,7 @@ public class BookController implements Serializable {
 
                 }
             }
+            setBookTypeBeforeSaving();
             bookBean.update(book);
              resetBook();
 
@@ -189,6 +205,10 @@ public class BookController implements Serializable {
         return "searchBooks?faces-redirect=true";
     }
 
+    private void setBookTypeBeforeSaving(){
+        BookType bookType = bookTypeBean.getBookType(selectedBookType);
+            book.setType(bookType);
+    }
     /**
      * This method is called when user wants to add a new book
      *
@@ -200,6 +220,8 @@ public class BookController implements Serializable {
         log.info("adding book: " + accountController.getAccount().getEmail());
         try {
 
+            // get BookType
+            setBookTypeBeforeSaving();
             String fileName = upload();
             if (!MyUtility.isEmptyString(fileName)) {
                 book.setBookFile(fileName);

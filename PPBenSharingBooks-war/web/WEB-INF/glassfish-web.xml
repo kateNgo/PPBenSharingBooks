@@ -3,12 +3,12 @@
 <glassfish-web-app error-url="/faces/login.xhtml">
    
     <security-role-mapping>
-        <role-name>User</role-name>
-        <group-name>User</group-name>
+        <role-name>USER</role-name>
+        <group-name>USER</group-name>
     </security-role-mapping>
     <security-role-mapping>
-        <role-name>Admin</role-name>
-        <group-name>Admin</group-name>
+        <role-name>ADMIN</role-name>
+        <group-name>ADMIN</group-name>
     </security-role-mapping>
     <security-role-mapping>
     <role-name>GUEST</role-name>

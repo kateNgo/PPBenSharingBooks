@@ -44,6 +44,7 @@
                     <h:outputLabel >#{msg['label.email']}</h:outputLabel>
                 </h:panelGroup>
                 <h:panelGroup layout="block" styleClass="form-group col-sm-5 ">
+                    
                      <h:inputText id="email" value="#{accountController.account.email}" required="true" requiredMessage="#{msg['error.createMemberForm.email']}">
                          <f:validateRegex
 		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />

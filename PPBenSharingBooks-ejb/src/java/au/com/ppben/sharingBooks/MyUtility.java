@@ -52,18 +52,18 @@ public class MyUtility {
     /**
      * These static variables are to use sending email by Gmail.
      */
-    private static final String USERNAME = "aip.sharingbook@gmail.com";  // GMail user name 
-    private static final String PASSWORD = "utsstudent"; // GMail password
+    private static final String USERNAME = "ppben.sharingbook@gmail.com";  // GMail user name 
+    private static final String PASSWORD = "Phu7o75ng@"; // GMail password
     private static final String HOST = "smtp.gmail.com";
     private static final int PORT = 465;
-    private static final String FROM = "aip.sharingbook@gmail.com";
+    private static final String FROM = "ppben.sharingbook@gmail.com";
     private static final boolean AUTH = true;
     private static final boolean DEBUG = false;
     
     // Base URL of validation link
-    private static final String VALIDATION_URL = "http://localhost:8080/SharingBook-war/faces/activate.xhtml?key=";
+    private static final String VALIDATION_URL = "http://localhost:32050/PPBenSharingBooks-war/faces/activate.xhtml?key=";
     // Login URL for mail of reset password
-    private static final String LOGIN_URL = "http://localhost:8080/SharingBook-war/faces/login.xhtml";
+    private static final String LOGIN_URL = "http://localhost:32050/PPBenSharingBooks-war/faces/login.xhtml";
     
         
     /**

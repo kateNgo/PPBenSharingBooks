@@ -146,9 +146,7 @@ public class Account implements Serializable{
     }
     
     public boolean isAdmin(){
-        if (this.accountType.equals(AccountType.ADMIN.toString()))
-            return true;
-        return false;
+        return this.accountType.equals(AccountType.ADMIN.toString());
     }
    
     

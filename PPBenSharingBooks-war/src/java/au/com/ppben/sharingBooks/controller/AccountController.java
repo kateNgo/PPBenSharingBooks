@@ -105,7 +105,7 @@ public class AccountController implements Serializable {
         }
         account.setPassword(MyUtility.hash256(account.getPassword()));
         account.setAccountType(AccountType.GUEST.toString());
-        
+        account = accountBean.addNewAccount(account);
         //Send validation email with validation URL
         String msg = MyUtility.validationMessage(account.getEmail());
         MyUtility.sendEmail(account.getEmail(), "SharingBook account validation email", msg);
@@ -135,7 +135,7 @@ public class AccountController implements Serializable {
   
         try {
             request.login(email,password);
-            account = accountBean.find(account.getEmail());
+            account = accountBean.find(email);
             return "/secure/searchBooks?faces-redirect=true";
             
         } catch (ServletException e) {
