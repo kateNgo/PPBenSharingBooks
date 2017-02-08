@@ -32,7 +32,10 @@ import javax.validation.constraints.NotNull;
             query = "select b from Book b where b.authors like :authors  and b.publisher like :publisher and b.title like :title"),
      @NamedQuery(
             name = "searchBooksByTitle",
-            query = "select b from Book b where lower(b.title) like :title")
+            query = "select b from Book b where lower(b.title) like :title"),
+     @NamedQuery(
+             name="searchBooksBySubType",
+             query="select b from Book b where b.subType.subTypeId = :subTypeId")
 })
 public class Book implements Serializable{
     
@@ -58,7 +61,7 @@ public class Book implements Serializable{
     @ManyToOne
     private Account account;
     @ManyToOne
-    private BookType type;
+    private SubType subType;
     
    
     /**
@@ -170,17 +173,14 @@ public class Book implements Serializable{
         this.bookFile = bookFile;
     }
 
-    /**
-     * This is bookType attribute of the book
-     * @return bookType the type of book
-     */
-    public BookType getType() {
-        return type;
+    public SubType getSubType() {
+        return subType;
     }
 
-    public void setType(BookType type) {
-        this.type = type;
+    public void setSubType(SubType subType) {
+        this.subType = subType;
     }
+
     
     
     @Override

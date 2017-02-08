@@ -9,38 +9,41 @@ package au.com.ppben.sharingBooks.bean;
  *
  * @author phuong
  */
-import au.com.ppben.sharingBooks.domain.BookType;
-import au.com.ppben.sharingBooks.remote.BookTypeBeanRemote;
+import au.com.ppben.sharingBooks.domain.SubType;
+import au.com.ppben.sharingBooks.domain.Type;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import au.com.ppben.sharingBooks.remote.TypeBeanRemote;
 
 @Stateless
-public class BookTypeBean implements Serializable, BookTypeBeanRemote{
+public class TypeBean implements Serializable, TypeBeanRemote{
 
     @PersistenceContext
     private EntityManager em;
     
     @Override
-    public BookType addBookType(BookType bookType) {
-        em.persist(bookType);
+    public Type addType(Type type) {
+        em.persist(type);
         em.flush();
-        return bookType;
-    }
-
-    @Override
-    public BookType getBookType(long id) {
-        BookType type = em.find(BookType.class, id);
         return type;
     }
 
     @Override
-    public List<BookType> list() {
-        TypedQuery<BookType> query = em.createQuery("select t from BookType t", BookType.class);
+    public Type getType(long id) {
+        Type type = em.find(Type.class, id);
+        return type;
+    }
+
+    @Override
+    public List<Type> list() {
+        TypedQuery<Type> query = em.createQuery("select t from Type t", Type.class);
         return query.getResultList();
     }
+
+    
     
 }

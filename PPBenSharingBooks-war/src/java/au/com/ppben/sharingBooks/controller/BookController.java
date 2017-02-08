@@ -2,9 +2,10 @@ package au.com.ppben.sharingBooks.controller;
 
 import au.com.ppben.sharingBooks.MyUtility;
 import au.com.ppben.sharingBooks.domain.Book;
-import au.com.ppben.sharingBooks.domain.BookType;
+import au.com.ppben.sharingBooks.domain.SubType;
+import au.com.ppben.sharingBooks.domain.Type;
 import au.com.ppben.sharingBooks.remote.BookBeanRemote;
-import au.com.ppben.sharingBooks.remote.BookTypeBeanRemote;
+import au.com.ppben.sharingBooks.remote.SubTypeBeanRemote;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -22,6 +23,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import org.jboss.logging.Logger;
+import au.com.ppben.sharingBooks.remote.TypeBeanRemote;
 
 /**
  *
@@ -44,11 +46,11 @@ public class BookController implements Serializable {
     @EJB
     private BookBeanRemote bookBean ;
     @EJB 
-    private BookTypeBeanRemote bookTypeBean;
+    private SubTypeBeanRemote subTypeBean;
     
     private static final String PDF_MINE_TYPE = "application/pdf";
     private String searchTerm;
-    private int selectedBookType;
+    private int selectedSubType;
     /**
      * This is to inject member controller to in order to ensure the users must
      * login before accessing other pages
@@ -106,12 +108,12 @@ public class BookController implements Serializable {
         this.searchTerm = searchTerm;
     }
 
-    public int getSelectedBookType() {
-        return selectedBookType;
+    public int getSelectedSubType() {
+        return selectedSubType;
     }
 
-    public void setSelectedBookType(int selectedBookType) {
-        this.selectedBookType = selectedBookType;
+    public void setSelectedSubType(int selectedSubType) {
+        this.selectedSubType = selectedSubType;
     }
 
     
@@ -175,7 +177,7 @@ public class BookController implements Serializable {
      */
     public String editBook(int id) {
         book = bookBean.getBookbyId(id);
-        selectedBookType = book.getType().getTypeId().intValue();
+        selectedSubType = book.getSubType().getSubTypeId().intValue();
         return "/secure/editBook?faces-redirect=true";
     }
 
@@ -193,7 +195,7 @@ public class BookController implements Serializable {
 
                 }
             }
-            setBookTypeBeforeSaving();
+            setSubTypeBeforeSaving();
             bookBean.update(book);
              resetBook();
 
@@ -205,9 +207,9 @@ public class BookController implements Serializable {
         return "searchBooks?faces-redirect=true";
     }
 
-    private void setBookTypeBeforeSaving(){
-        BookType bookType = bookTypeBean.getBookType(selectedBookType);
-            book.setType(bookType);
+    private void setSubTypeBeforeSaving(){
+        SubType subType = subTypeBean.getSubType(selectedSubType);
+            book.setSubType(subType);
     }
     /**
      * This method is called when user wants to add a new book
@@ -220,8 +222,8 @@ public class BookController implements Serializable {
         log.info("adding book: " + accountController.getAccount().getEmail());
         try {
 
-            // get BookType
-            setBookTypeBeforeSaving();
+            // get Type
+            setSubTypeBeforeSaving();
             String fileName = upload();
             if (!MyUtility.isEmptyString(fileName)) {
                 book.setBookFile(fileName);

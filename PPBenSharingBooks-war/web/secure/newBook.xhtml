@@ -45,11 +45,11 @@
                         
                          <h:panelGroup layout="block" styleClass="row">
                         <h:panelGroup layout="block" styleClass="form-group col-sm-2">
-                            <h:outputLabel >#{msg['label.bookType']}</h:outputLabel></h:panelGroup>
+                            <h:outputLabel >#{msg['label.subType']}</h:outputLabel></h:panelGroup>
                         <h:panelGroup layout="block" styleClass="form-group col-sm-4">
-                            <h:selectOneMenu id="bookType" value="#{bookController.selectedBookType}"  >
-                                <f:selectItems value="#{bookTypeController.list()}" var="t"
-                                               itemLabel="#{t.typeName}" itemValue="#{t.typeId}"  />
+                            <h:selectOneMenu id="bookType" value="#{bookController.selectedSubType}"  >
+                                <f:selectItems value="#{subTypeController.list()}" var="t"
+                                               itemLabel="#{t.subTypeName}" itemValue="#{t.subTypeId}"  />
                                
                             </h:selectOneMenu>
                         </h:panelGroup></h:panelGroup>

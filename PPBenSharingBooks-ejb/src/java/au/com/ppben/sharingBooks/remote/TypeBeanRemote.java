@@ -9,29 +9,31 @@ package au.com.ppben.sharingBooks.remote;
  *
  * @author phuong
  */
-import au.com.ppben.sharingBooks.domain.BookType;
+import au.com.ppben.sharingBooks.domain.SubType;
+import au.com.ppben.sharingBooks.domain.Type;
 import java.util.List;
 
-public interface BookTypeBeanRemote {
+public interface TypeBeanRemote {
     
     /**
      * This method is to add a new bookType
      * @param bookType
      * @return bookType the new added bookType
      */
-    public BookType addBookType(BookType bookType);
+    public Type addType(Type bookType);
     
     /**
      * This method is to get a type by id
      * @param id
      * @return bookType the found bookType
      */
-    public BookType getBookType(long id);
+    public Type getType(long id);
     
     /**
      * This method is to get all bookTypes
      * @return list the list of all bookTypes
      */
-    public List<BookType> list();
+    public List<Type> list();
+    
     
 }

@@ -64,4 +64,11 @@ public class BookBean implements Serializable, BookBeanRemote{
          
         return query.getResultList();
     }
+
+    @Override
+    public List<Book> searchBooksBySubType(long subTypeId) {
+        TypedQuery <Book> query = em.createNamedQuery("searchBooksBySubType", Book.class);
+        query.setParameter("subTypeId", subTypeId);
+        return query.getResultList();
+    }
 }

@@ -4,11 +4,7 @@
                 template="/WEB-INF/templates/ThiNgoBokOnlineLayout.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core">
-
-    <f:metadata>
-        <f:viewAction action="#{accountController.resetAccount()}"/>
-    </f:metadata>
-    <ui:define name="content">
+   <ui:define name="content">
 
         <h:form  id="createMemberForm" >
             <h:panelGroup layout="block" styleClass="row">
@@ -46,9 +42,7 @@
                 <h:panelGroup layout="block" styleClass="form-group col-sm-5 ">
                     
                      <h:inputText id="email" value="#{accountController.account.email}" required="true" requiredMessage="#{msg['error.createMemberForm.email']}">
-                         <f:validateRegex
-		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-                         <f:ajax event="valueChange" execute="email" render="usernameAvailable"/>
+                         
                     </h:inputText>
                 </h:panelGroup>
             </h:panelGroup>

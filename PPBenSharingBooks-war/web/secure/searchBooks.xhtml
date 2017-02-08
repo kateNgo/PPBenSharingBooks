@@ -50,6 +50,10 @@
                                 #{book.publishYear}
                         </p:column>
                         <p:column>
+                            <f:facet name="header">#{msg['label.subType']}</f:facet>
+                            #{book.subType}
+                        </p:column>
+                        <p:column>
                             <h:commandLink action="#{bookController.downloadPdf(book.bookFile)}" value="#{msg['link.download']}" >
                             </h:commandLink>
                         </p:column>
@@ -63,12 +67,7 @@
                         </p:column>
                     </p:dataTable>
                 </h:panelGroup>
-                <h:panelGroup layout="block" styleClass="row"  >
-
-                    <h:commandButton value="#{msg['label.export']}"  action="/secure/listBooksToExport"/>
-
-
-                </h:panelGroup>
+               
             </h:form>
        
     </ui:define>

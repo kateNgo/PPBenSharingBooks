@@ -49,7 +49,18 @@ public interface BookBeanRemote {
      */
     public List<Book> allBooks();
      /**
-     * This method is to list books by title, authors and publisher in book
+     * This method is to list books by  subType
+     *
+     * @param subTypeId
+     *
+     * @return List list of book found by conditions
+     
+     */
+    
+    public List<Book> searchBooksBySubType(long subTypeId);
+
+     /**
+     * This method is to list books by title
      * table
      *
      * @param title
@@ -60,6 +71,5 @@ public interface BookBeanRemote {
     
     public List<Book> searchBooksByTitle(String title);
 
-    
     
 }

@@ -20,7 +20,7 @@ import javax.validation.constraints.NotNull;
  * @author phuong
  */
 @Entity
-public class BookType implements Serializable{
+public class Type implements Serializable{
     /**
      * This is primary key that auto increment 
      */
@@ -31,8 +31,8 @@ public class BookType implements Serializable{
     @Column
     @NotNull
     private String typeName;
-     @OneToMany(mappedBy = "type",orphanRemoval=true, cascade={CascadeType.ALL})
-    List<Book> books;
+    @OneToMany(mappedBy = "type",orphanRemoval=true, cascade={CascadeType.ALL})
+    List<SubType> subTypes;
 
     public Long getTypeId() {
         return typeId;
@@ -49,6 +49,16 @@ public class BookType implements Serializable{
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
+
+    public List<SubType> getSubTypes() {
+        return subTypes;
+    }
+
+    public void setSubTypes(List<SubType> subTypes) {
+        this.subTypes = subTypes;
+    }
+
+    
     
     
     

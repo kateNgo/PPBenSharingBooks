@@ -44,8 +44,8 @@
                         <h:panelGroup layout="block" styleClass="form-group col-sm-2">
                             <h:outputLabel >#{msg['label.bookType']}</h:outputLabel></h:panelGroup>
                         <h:panelGroup layout="block" styleClass="form-group col-sm-4">
-                            <h:selectOneMenu id="bookType" value="#{bookController.selectedBookType}"  >
-                                <f:selectItems value="#{bookTypeController.list()}" var="t"
+                            <h:selectOneMenu id="bookType" value="#{bookController.selectedSubType}"  >
+                                <f:selectItems value="#{typeController.list()}" var="t"
                                                itemLabel="#{t.typeName}" itemValue="#{t.typeId}"  />
                                
                             </h:selectOneMenu>

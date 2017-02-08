@@ -5,8 +5,7 @@
  */
 package au.com.ppben.sharingBooks.converter;
 
-import au.com.ppben.sharingBooks.domain.BookType;
-import au.com.ppben.sharingBooks.remote.BookTypeBeanRemote;
+import au.com.ppben.sharingBooks.domain.Type;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -14,6 +13,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.inject.Named;
+import au.com.ppben.sharingBooks.remote.TypeBeanRemote;
 
 /**
  *
@@ -24,11 +24,11 @@ import javax.inject.Named;
 public class BookTypeConverter implements Converter, Serializable{
 
     @EJB
-    private BookTypeBeanRemote bookTypeBean;
+    private TypeBeanRemote bookTypeBean;
     
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-       return bookTypeBean.getBookType(Integer.parseInt(value));
+       return bookTypeBean.getType(Integer.parseInt(value));
     }
 
     @Override
