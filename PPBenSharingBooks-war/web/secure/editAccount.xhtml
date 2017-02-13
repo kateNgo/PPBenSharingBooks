@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/templates/ThiNgoBokOnlineLayout.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                >
+
+    <ui:define name="content">
+        <h:form  id="createMemberForm" >
+            <h:panelGroup layout="block" styleClass="row">
+                <h:panelGroup layout="block" styleClass="form-group col-sm-7">
+                    <h:outputText value="#{msg['form.editUser.title']}" styleClass="formHeader"/>
+                </h:panelGroup>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="row">
+                <h:panelGroup layout="block" styleClass="form-group col-sm-2">
+                    <h:outputLabel>#{msg['label.email']}</h:outputLabel>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="form-group col-sm-5">
+                    <h:inputText id="email" value="#{accountController.account.email}" required="true" requiredMessage="#{msg['error.createMemberForm.email']}"/>
+                </h:panelGroup>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="row">
+                <h:panelGroup layout="block" styleClass="form-group col-sm-2">
+                    <h:outputLabel>#{msg['label.fullName']}</h:outputLabel>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="form-group col-sm-5">
+                    <h:inputText id="fullName" value="#{accountController.account.fullName}" required="true" requiredMessage="#{msg['error.createMemberForm.fullName']}"/>
+                </h:panelGroup>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="row">
+                <h:panelGroup layout="block" styleClass="form-group col-sm-2">
+                    <h:outputLabel>#{msg['label.mobile']}</h:outputLabel>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="form-group col-sm-5">
+                    <h:inputText id="mobile" value="#{accountController.account.mobile}" required="true" requiredMessage="#{msg['error.createMemberForm.mobile']}"/>
+                </h:panelGroup>
+            </h:panelGroup>
+            
+            <h:panelGroup layout="block" styleClass="row">
+                <h:panelGroup layout="block" styleClass="form-group col-sm-2">
+                    <h:commandButton styleClass="btn btn-success btn-lg" id="loginBtn" action="#{accountController.updateAccount()}" value="#{msg['button.save']}"/>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="form-group col-sm-5">
+                    <h:link   id="changePasswordBtn" outcome="changePassword" >#{msg['button.changePassword']}</h:link>
+                </h:panelGroup>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="row">
+                <h:panelGroup  styleClass="form-group col-sm-6 errorDiv" >
+                    <h:messages/>
+                </h:panelGroup>
+            </h:panelGroup>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

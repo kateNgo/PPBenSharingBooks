@@ -45,7 +45,7 @@ public class AccountController implements Serializable {
     
     private String reTypingPassword;
     private boolean userAvailable = false;
-    
+       
     // Length of generated random password
     private static int LENGTH_PW = 6;
     
@@ -85,6 +85,7 @@ public class AccountController implements Serializable {
         this.searchTerm = searchTerm;
     }
 
+    
     /**
      * the method is called when user sign up
      *
@@ -238,10 +239,12 @@ public class AccountController implements Serializable {
      * @return 
      */
     public String updateAccount(){
+        /*
         if (!checkRetypingPassword()) {
             MyUtility.showError(RETYPING_PASSWORD_DIFFERENT);
             return null;
         }
+        */
         try {
             account.setPassword(MyUtility.hash256(account.getPassword()));
         } catch (NoSuchAlgorithmException ex) {
@@ -249,6 +252,33 @@ public class AccountController implements Serializable {
         }
         account = accountBean.updateAccount(account);
         return "/secure/searchBooks?faces-redirect=true";
+    }
+    /**
+     * used to update account info by user 
+     * @return 
+     */
+    public String changePassword(){
+        
+        if (!checkRetypingPassword()) {
+            MyUtility.showError(RETYPING_PASSWORD_DIFFERENT);
+            return null;
+        }
+        
+        try {
+            account.setPassword(MyUtility.hash256(account.getPassword()));
+        } catch (NoSuchAlgorithmException ex) {
+            java.util.logging.Logger.getLogger(AccountController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        account = accountBean.updateAccount(account);
+        return "/secure/searchBooks?faces-redirect=true";
+    }
+    
+    /**
+     *  This method is to return updateAccount form
+     * @return string the link of edit account form
+     */
+    public String getUpdateAccountForm(){
+        return "/secure/editAccount?faces-redirect=true";
     }
     
     /**
@@ -338,6 +368,7 @@ public class AccountController implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+    
     
     
 }
