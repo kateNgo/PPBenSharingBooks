@@ -9,7 +9,6 @@ package au.com.ppben.sharingBooks.bean;
  *
  * @author phuong
  */
-import au.com.ppben.sharingBooks.domain.SubType;
 import au.com.ppben.sharingBooks.domain.Type;
 import java.io.Serializable;
 import java.util.List;
@@ -20,11 +19,11 @@ import javax.persistence.TypedQuery;
 import au.com.ppben.sharingBooks.remote.TypeBeanRemote;
 
 @Stateless
-public class TypeBean implements Serializable, TypeBeanRemote{
+public class TypeBean implements Serializable, TypeBeanRemote {
 
     @PersistenceContext
     private EntityManager em;
-    
+
     @Override
     public Type addType(Type type) {
         em.persist(type);
@@ -44,6 +43,4 @@ public class TypeBean implements Serializable, TypeBeanRemote{
         return query.getResultList();
     }
 
-    
-    
 }

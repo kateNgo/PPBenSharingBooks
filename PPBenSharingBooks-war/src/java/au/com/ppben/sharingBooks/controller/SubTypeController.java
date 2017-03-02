@@ -20,9 +20,10 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class SubTypeController implements Serializable {
+
     @EJB
     private SubTypeBeanRemote subTypeBean;
-    
+
     private SubType subType;
 
     public SubType getSubType() {
@@ -32,11 +33,13 @@ public class SubTypeController implements Serializable {
     public void setSubType(SubType subType) {
         this.subType = subType;
     }
-    public List<SubType> getSubTypesByType(long typeId){
+
+    public List<SubType> getSubTypesByType(long typeId) {
         return subTypeBean.getSubTypesByType(typeId);
     }
-    public List<SubType> list(){
+
+    public List<SubType> list() {
         return subTypeBean.list();
     }
-    
+
 }

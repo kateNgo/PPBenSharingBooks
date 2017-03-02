@@ -5,7 +5,6 @@
  */
 package au.com.ppben.sharingBooks.converter;
 
-import au.com.ppben.sharingBooks.domain.Type;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -21,19 +20,19 @@ import au.com.ppben.sharingBooks.remote.TypeBeanRemote;
  */
 @Named
 @SessionScoped
-public class BookTypeConverter implements Converter, Serializable{
+public class BookTypeConverter implements Converter, Serializable {
 
     @EJB
     private TypeBeanRemote bookTypeBean;
-    
+
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-       return bookTypeBean.getType(Integer.parseInt(value));
+        return bookTypeBean.getType(Integer.parseInt(value));
     }
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
         return (value).toString();
     }
-    
+
 }

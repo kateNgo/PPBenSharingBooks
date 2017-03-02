@@ -3,7 +3,6 @@ package au.com.ppben.sharingBooks.controller;
 import au.com.ppben.sharingBooks.MyUtility;
 import au.com.ppben.sharingBooks.domain.Book;
 import au.com.ppben.sharingBooks.domain.SubType;
-import au.com.ppben.sharingBooks.domain.Type;
 import au.com.ppben.sharingBooks.remote.BookBeanRemote;
 import au.com.ppben.sharingBooks.remote.SubTypeBeanRemote;
 import java.io.File;
@@ -23,7 +22,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import org.jboss.logging.Logger;
-import au.com.ppben.sharingBooks.remote.TypeBeanRemote;
 
 /**
  *
@@ -39,15 +37,14 @@ public class BookController implements Serializable {
     /**
      * Creates a new instance of BookBean with empty value
      */
-    
-    
+
     private Book book = new Book();
     private Part uploadedFile;
     @EJB
-    private BookBeanRemote bookBean ;
-    @EJB 
+    private BookBeanRemote bookBean;
+    @EJB
     private SubTypeBeanRemote subTypeBean;
-    
+
     private static final String PDF_MINE_TYPE = "application/pdf";
     private String searchTerm;
     private int selectedSubType;
@@ -57,7 +54,7 @@ public class BookController implements Serializable {
      */
     @Inject
     private AccountController accountController;
-    
+
     /**
      * The getter method is to inject the backing bean accountController into
      * bookController
@@ -94,6 +91,7 @@ public class BookController implements Serializable {
 
     /**
      * This method is to get searchTerm value
+     *
      * @return string value of the search term
      */
     public String getSearchTerm() {
@@ -101,8 +99,9 @@ public class BookController implements Serializable {
     }
 
     /**
-     * This method is to set value for searchTerm 
-     * @param searchTerm 
+     * This method is to set value for searchTerm
+     *
+     * @param searchTerm
      */
     public void setSearchTerm(String searchTerm) {
         this.searchTerm = searchTerm;
@@ -116,7 +115,6 @@ public class BookController implements Serializable {
         this.selectedSubType = selectedSubType;
     }
 
-    
     /**
      * This method is to get uploaded file
      *
@@ -150,28 +148,29 @@ public class BookController implements Serializable {
      * @return arrayList of books are found
      *
      */
-    
     public List<Book> searchBooksByTitle() {
         log.info("search book by title: " + accountController.getAccount().getEmail());
         return bookBean.searchBooksByTitle(searchTerm);
     }
 
     /**
-     * This method is to handle the deleting a book that she/he owns or Administrator
-     * When book is deleted by Administrator, sms will be sent to user.
+     * This method is to handle the deleting a book that she/he owns or
+     * Administrator When book is deleted by Administrator, sms will be sent to
+     * user.
      *
      * @param id bookId
      *
      */
     public void delete(long id) {
         //Need to be check it is fine with location/ process at here.
-       
+
         bookBean.delete(id);
     }
 
     /**
      * this method is called when the user wants to edit the book that he/she
-     * owns 
+     * owns
+     *
      * @param id
      * @return String
      */
@@ -197,7 +196,7 @@ public class BookController implements Serializable {
             }
             setSubTypeBeforeSaving();
             bookBean.update(book);
-             resetBook();
+            resetBook();
 
         } catch (IOException e) {
             log.error(e.getMessage());
@@ -207,10 +206,11 @@ public class BookController implements Serializable {
         return "searchBooks?faces-redirect=true";
     }
 
-    private void setSubTypeBeforeSaving(){
+    private void setSubTypeBeforeSaving() {
         SubType subType = subTypeBean.getSubType(selectedSubType);
-            book.setSubType(subType);
+        book.setSubType(subType);
     }
+
     /**
      * This method is called when user wants to add a new book
      *
@@ -341,7 +341,6 @@ public class BookController implements Serializable {
 
     }
 
-    
     /**
      * This is private method get the real path of uploadedFiles folder
      *

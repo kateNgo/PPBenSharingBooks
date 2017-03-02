@@ -17,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+
 /**
  *
  * @author phuong
@@ -30,22 +31,23 @@ import javax.validation.constraints.NotNull;
             name = "loadAllSubTypes",
             query = "select st from SubType st ")
 })
-public class SubType implements Serializable{
-     /**
-     * This is primary key that auto increment 
+public class SubType implements Serializable {
+
+    /**
+     * This is primary key that auto increment
      */
-    @Id 
+    @Id
     @GeneratedValue
     private Long subTypeId;
-    
+
     @Column
     @NotNull
     private String subTypeName;
-    
+
     @ManyToOne
     private Type type;
-    
-    @OneToMany(mappedBy = "subType",orphanRemoval=true, cascade={CascadeType.ALL})
+
+    @OneToMany(mappedBy = "subType", orphanRemoval = true, cascade = {CascadeType.ALL})
     List<Book> books;
 
     public SubType() {
@@ -58,8 +60,6 @@ public class SubType implements Serializable{
     public void setSubTypeId(Long subTypeId) {
         this.subTypeId = subTypeId;
     }
-
-    
 
     public String getSubTypeName() {
         return subTypeName;
@@ -85,7 +85,4 @@ public class SubType implements Serializable{
         this.type = type;
     }
 
-    
-
-    
 }

@@ -16,9 +16,9 @@
                         </h:panelGroup>
                     <h:panelGroup layout="block" styleClass="row">
                         <h:panelGroup layout="block" styleClass="form-group col-sm-2">
-                            <h:outputLabel >#{msg['label.title']}</h:outputLabel></h:panelGroup>
+                            <h:outputLabel class="control-label">#{msg['label.title']}</h:outputLabel></h:panelGroup>
                         <h:panelGroup layout="block" styleClass="form-group col-sm-5">
-                            <h:inputText id="title" value="#{bookController.book.title}" required="true" requiredMessage="#{msg['error.createBookForm.title']}" />
+                            <h:inputText id="title" class="form-control" value="#{bookController.book.title}" required="true" requiredMessage="#{msg['error.createBookForm.title']}" />
                         </h:panelGroup>
                        
                     </h:panelGroup>
@@ -59,6 +59,7 @@
                             <h:outputLabel >#{msg['label.bookFile']}</h:outputLabel></h:panelGroup>
                         <h:panelGroup layout="block" styleClass="form-group col-sm-5">
                             <h:inputFile id="bookFile" value="#{bookController.uploadedFile}" required="true" requiredMessage="#{msg['error.createBookForm.file']}" />
+                            <p class="help-block">Uploaded File must be a PDF file </p>
                         </h:panelGroup></h:panelGroup>
                     <h:panelGroup layout="block" styleClass="row">
                         <h:panelGroup layout="block" styleClass="form-group col-sm-6">

@@ -18,6 +18,7 @@ import javax.ejb.EJB;
 /**
  *
  * @author Aiden Seonghwa Son
+ * @Author Kate Ngo
  */
 @RequestScoped
 @ManagedBean

@@ -20,18 +20,19 @@ import javax.validation.constraints.NotNull;
  * @author phuong
  */
 @Entity
-public class Type implements Serializable{
+public class Type implements Serializable {
+
     /**
-     * This is primary key that auto increment 
+     * This is primary key that auto increment
      */
-    @Id 
+    @Id
     @GeneratedValue
     private Long typeId;
-    
+
     @Column
     @NotNull
     private String typeName;
-    @OneToMany(mappedBy = "type",orphanRemoval=true, cascade={CascadeType.ALL})
+    @OneToMany(mappedBy = "type", orphanRemoval = true, cascade = {CascadeType.ALL})
     List<SubType> subTypes;
 
     public Long getTypeId() {
@@ -58,8 +59,4 @@ public class Type implements Serializable{
         this.subTypes = subTypes;
     }
 
-    
-    
-    
-    
 }

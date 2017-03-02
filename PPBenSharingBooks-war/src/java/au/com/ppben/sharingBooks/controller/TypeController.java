@@ -20,14 +20,15 @@ import au.com.ppben.sharingBooks.remote.TypeBeanRemote;
  */
 @Named
 @SessionScoped
-public class TypeController implements Serializable{
-     Logger log = Logger.getLogger(this.getClass().getName());
+public class TypeController implements Serializable {
+
+    Logger log = Logger.getLogger(this.getClass().getName());
     private Type type;
-    
+
     @EJB
-    private TypeBeanRemote typeBean ;
-    
-    public List<Type> list(){
+    private TypeBeanRemote typeBean;
+
+    public List<Type> list() {
         return typeBean.list();
     }
 
@@ -38,5 +39,5 @@ public class TypeController implements Serializable{
     public void setType(Type type) {
         this.type = type;
     }
-    
+
 }

@@ -105,6 +105,17 @@ public class MyUtility {
     }
     
     /**
+     * Adds a message to the current faces context, so that it will appear in
+     * a h:messages element.
+     * @param message the text of the error message to show the user
+     */
+    public static void showMessage(String message) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(message));
+    }
+    
+    
+    /**
      * Method to send sms via Twilio web service.
      * @param receiveNo as mobile number of receiver
      * @param msg as message of sms

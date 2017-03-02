@@ -10,16 +10,18 @@ package au.com.ppben.sharingBooks.domain;
  * @author phuong
  */
 public enum AccountType {
-    
+
     ADMIN("Administrator user"),
     USER("User user"),
     GUEST("Guest");
     private final String label;
-    private AccountType(String label){
-        this.label=label;
+
+    private AccountType(String label) {
+        this.label = label;
     }
-    public String getLabel(){
+
+    public String getLabel() {
         return label;
     }
-    
+
 }

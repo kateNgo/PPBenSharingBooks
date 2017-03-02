@@ -5,7 +5,6 @@
  */
 package au.com.ppben.sharingBooks.bean;
 
-import au.com.ppben.sharingBooks.domain.Book;
 import au.com.ppben.sharingBooks.domain.SubType;
 import au.com.ppben.sharingBooks.remote.SubTypeBeanRemote;
 import java.io.Serializable;
@@ -17,14 +16,14 @@ import javax.persistence.TypedQuery;
 
 /**
  *
- * @author phuong
+ * @author Phuong Ngo
  */
 @Stateless
-public class SubTypeBean implements Serializable, SubTypeBeanRemote{
+public class SubTypeBean implements Serializable, SubTypeBeanRemote {
 
     @PersistenceContext
     private EntityManager em;
-    
+
     @Override
     public SubType addSubType(SubType subType) {
         em.persist(subType);
@@ -34,7 +33,7 @@ public class SubTypeBean implements Serializable, SubTypeBeanRemote{
 
     @Override
     public SubType getSubType(long id) {
-       return em.find(SubType.class, id);
+        return em.find(SubType.class, id);
     }
 
     @Override
@@ -47,8 +46,8 @@ public class SubTypeBean implements Serializable, SubTypeBeanRemote{
     public List<SubType> getSubTypesByType(long typeId) {
         TypedQuery<SubType> query = em.createNamedQuery("searchSubTypesByType", SubType.class);
         query.setParameter("typeId", typeId);
-        return query.getResultList(); 
-        
+        return query.getResultList();
+
     }
-    
+
 }

@@ -5,7 +5,6 @@
  */
 package au.com.ppben.sharingBooks.remote;
 
-import au.com.ppben.sharingBooks.domain.Book;
 import au.com.ppben.sharingBooks.domain.SubType;
 import java.util.List;
 
@@ -14,9 +13,12 @@ import java.util.List;
  * @author phuong
  */
 public interface SubTypeBeanRemote {
-    
+
     public SubType addSubType(SubType subType);
+
     public SubType getSubType(long id);
+
     public List<SubType> list();
+
     public List<SubType> getSubTypesByType(long typeId);
 }
